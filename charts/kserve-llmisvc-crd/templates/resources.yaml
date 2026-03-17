@@ -1,0 +1,4 @@
+{{- include "kserve-llmisvc-crd.renderCrdWithCertNamespace" (dict
+  "baseFile" "files/resources.yaml"
+  "certName" "llmisvc-serving-cert"
+  "context" .) -}}

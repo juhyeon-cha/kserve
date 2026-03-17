@@ -47,6 +47,11 @@ kustomize build ${REPO_ROOT}/config/llmisvc > ${REPO_ROOT}/charts/kserve-llmisvc
 kustomize build ${REPO_ROOT}/config/certmanager > ${REPO_ROOT}/charts/kserve-llmisvc-resources/files/common/certmanager.yaml
 kustomize build ${REPO_ROOT}/config/configmap > ${REPO_ROOT}/charts/kserve-llmisvc-resources/files/common/configmap.yaml
 
+# LLMISVC CRD
+kustomize build ${REPO_ROOT}/config/crd/full/llmisvc > ${REPO_ROOT}/charts/kserve-llmisvc-crd/files/resources.yaml
+echo "---" >> ${REPO_ROOT}/charts/kserve-llmisvc-crd/files/resources.yaml
+kustomize build ${REPO_ROOT}/config/crd/full/clusterstoragecontainer >> ${REPO_ROOT}/charts/kserve-llmisvc-crd/files/resources.yaml
+
 # StorageContainer resources for Helm charts
 echo "Building storagecontainer resources..."
 kustomize build ${REPO_ROOT}/config/storagecontainers > ${REPO_ROOT}/charts/kserve-resources/files/common/storagecontainer.yaml
